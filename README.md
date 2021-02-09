@@ -6,6 +6,7 @@ Projeto com objetivo de estudos e aprendizado de novas linguagens.
 - Spring boot
 - Gradle
 - Kotlin
+- Flyway
 
 
 # Overview da Arquitetura
@@ -30,3 +31,9 @@ Projeto com objetivo de estudos e aprendizado de novas linguagens.
  ```
 gradlew.bat build
  ```
+
+# Migrations / Banco de dados
+
+Criar o banco de dados MySQL com usuário, senha e schema definidos na configuração do flyway (build.grade.kts)
+
+Executar a aplicação normalmente ou task flyway.migrate do gradle
