@@ -6,6 +6,7 @@ plugins {
 	war
 	kotlin("jvm") version "1.4.21"
 	kotlin("plugin.spring") version "1.4.21"
+	id("org.flywaydb.flyway")version "7.5.2"
 }
 
 group = "com.yow"
@@ -24,6 +25,7 @@ dependencies {
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	implementation("org.flywaydb:flyway-core:7.5.2")
 }
 
 tasks.withType<KotlinCompile> {
