@@ -44,10 +44,10 @@ tasks.withType<Test> {
 
 flyway {
 	url = "jdbc:mysql://localhost:3306/"
-	user = "root"
+	user = "user"
 	defaultSchema = "yoww"
 	table = "flyway_schema_history"
-	password = "roottoor"
+	password = "password"
 	baselineOnMigrate = true
 	locations = arrayOf("filesystem:src/main/resources/db/migration")
 	encoding = "UTF-8"
