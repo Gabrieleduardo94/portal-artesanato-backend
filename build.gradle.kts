@@ -6,6 +6,7 @@ plugins {
 	war
 	kotlin("jvm") version "1.4.21"
 	kotlin("plugin.spring") version "1.4.21"
+	kotlin("plugin.jpa") version "1.4.21"
 	id("org.flywaydb.flyway")version "7.5.2"
 }
 
@@ -19,7 +20,9 @@ repositories {
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+	implementation("mysql:mysql-connector-java:8.0.23")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
@@ -37,4 +40,16 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+}
+
+flyway {
+	url = "jdbc:mysql://localhost:3306/"
+	user = "user"
+	defaultSchema = "yoww"
+	table = "flyway_schema_history"
+	password = "password"
+	baselineOnMigrate = true
+	locations = arrayOf("filesystem:src/main/resources/db/migration")
+	encoding = "UTF-8"
+	createSchemas = true
 }
