@@ -1,3 +1,6 @@
+# Local config
+local.properties
+
 # Compiled class file
 *.class
 
