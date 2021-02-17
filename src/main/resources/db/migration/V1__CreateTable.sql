@@ -2,8 +2,8 @@ CREATE TABLE IF NOT EXISTS Person(
     id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     document VARCHAR(14) NOT NULL,
-    contactTel VARCHAR(15) NULL,
     contactCel VARCHAR(15) NOT NULL,
+    contactTel VARCHAR(15) NULL,
     email VARCHAR(255) NOT NULL
 );
 
@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS Address(
     address VARCHAR(255) NOT NULL,
     number INT NULL,
     city VARCHAR(255) NOT NULL,
-    estate VARCHAR(255) NOT NULL,
+    state VARCHAR(255) NOT NULL,
     district VARCHAR(255) NOT NULL,
     zipCode VARCHAR(8) NOT NULL,
     personId BIGINT NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS Product(
     FOREIGN KEY (personId) REFERENCES Person(id)
 );
 
-CREATE TABLE IF NOT EXISTS RequestProd(
+CREATE TABLE IF NOT EXISTS Request(
     id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     requestDate DATETIME NOT NULL,
     buyerId BIGINT NOT NULL,
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS Situation(
     status VARCHAR(19) NOT NULL,
     situationDate DATETIME NULL,
     requestProdId BIGINT NOT NULL,
-    FOREIGN KEY (requestProdId) REFERENCES RequestProd(id)
+    FOREIGN KEY (requestProdId) REFERENCES Request(id)
 );
 
 CREATE TABLE IF NOT EXISTS Parcel(
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS Parcel(
     countProduct INT NOT NULL,
     price DOUBLE NOT NULL,
     productId BIGINT NOT NULL,
-    requestProdId BIGINT NOT NULL,
+    requestId BIGINT NOT NULL,
     FOREIGN KEY (ProductId) REFERENCES Product(id),
-    FOREIGN KEY (requestProdId) REFERENCES RequestProd(id)
+    FOREIGN KEY (requestProdId) REFERENCES Request(id)
 );
