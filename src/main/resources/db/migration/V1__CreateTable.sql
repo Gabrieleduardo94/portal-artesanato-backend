@@ -39,10 +39,11 @@ CREATE TABLE IF NOT EXISTS Request(
 
 CREATE TABLE IF NOT EXISTS Situation(
     id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    status VARCHAR(19) NOT NULL,
     situationDate DATETIME NULL,
+    statusId VARCHAR(19) NOT NULL,
     requestProdId BIGINT NOT NULL,
-    FOREIGN KEY (requestProdId) REFERENCES Request(id)
+    FOREIGN KEY (requestProdId) REFERENCES Request(id),
+    FOREIGN KEY (statusId) REFERENCES Status(id)
 );
 
 CREATE TABLE IF NOT EXISTS Parcel(
@@ -53,4 +54,9 @@ CREATE TABLE IF NOT EXISTS Parcel(
     requestId BIGINT NOT NULL,
     FOREIGN KEY (ProductId) REFERENCES Product(id),
     FOREIGN KEY (requestProdId) REFERENCES Request(id)
+);
+
+CREATE TABLE IF NOT EXISTS Status(
+    id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    description VARCHAR(255) NOT NULL
 );
